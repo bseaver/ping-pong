@@ -2,6 +2,16 @@
  // Back End Section
 ////////////////////
 var pingPongSequence = function(positiveInteger) {
+  var results;
+
+  for (var i = 1; i <= positiveInteger; i++) {
+    if (!results) {
+      results = [];
+    }
+    results.push(i);
+  }
+
+  return results;
 }
 
 
@@ -12,15 +22,17 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
 
-    var positiveInteger = parseInt( $("#positiveInteger").val() );
+    var positiveInteger = parseInt( $("#inputPositiveInteger").val() );
 
-    var result = pingPongSequence(positiveInteger);
+    var results = pingPongSequence(positiveInteger);
 
-    if (!Array.isArray(result)) {
-      result = "Result is not an array";
+    if (!Array.isArray(results)) {
+      outputResult = "Result is not an array";
+    } else {
+      var outputResult = "[" + results.join(", ") + "]";
     }
 
-    $("#pingPongSequence").text(result);
+    $("#pingPongSequence").text(outputResult);
 
     $("#outputSection").fadeOut(100).fadeIn(100);
   });
