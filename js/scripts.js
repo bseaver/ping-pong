@@ -2,13 +2,17 @@
  // Back End Section
 ////////////////////
 var pingPongSequence = function(positiveInteger) {
-  var results;
+  var results, item;
 
   for (var i = 1; i <= positiveInteger; i++) {
     if (!results) {
       results = [];
     }
-    results.push(i);
+    item = i;
+    if (i % 3 === 0) {
+      item = "ping"
+    }
+    results.push(item);
   }
 
   return results;
@@ -26,11 +30,23 @@ $(document).ready(function() {
 
     var results = pingPongSequence(positiveInteger);
 
+    var outputResult;
+
     if (!Array.isArray(results)) {
       outputResult = "Result is not an array";
     } else {
-      var outputResult = "[" + results.join(", ") + "]";
-    }
+      // Use map to surround string items with double quotes
+      // Note: We do this to make the string values appear exactly as they do in the example output
+      results = results.map(function(item) {
+        if ((typeof item) === "string") {
+          item = '"' + item + '"';
+        }
+        return item;
+      });
+
+      // Note: We join with a comma and a space to make the sequence appear exactly as it does in the example output
+      outputResult = "[" + results.join(", ") + "]";
+    } // End if !Array
 
     $("#pingPongSequence").text(outputResult);
 
