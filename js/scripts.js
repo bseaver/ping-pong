@@ -45,9 +45,10 @@ $(document).ready(function() {
     } else {
       // Use map to surround string items with double quotes
       // Note: We do this to make the string values appear exactly as they do in the example output
-      results = results.map(function(item) {
+      // Also enable hovering over string items to reveal what the number would be without replacement
+      results = results.map(function(item, index) {
         if ((typeof item) === "string") {
-          item = '"' + item + '"';
+          item = '<span title="' + (index + 1).toString() + '">"' + item + '"</span>';
         }
         return item;
       });
@@ -56,7 +57,7 @@ $(document).ready(function() {
       outputResult = "[" + results.join(", ") + "]";
     } // End if !Array
 
-    $("#pingPongSequence").text(outputResult);
+    $("#pingPongSequence").html(outputResult);
 
     $("#outputSection").fadeOut(100).fadeIn(100);
   });
