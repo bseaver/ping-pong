@@ -12,6 +12,9 @@ var pingPongSequence = function(positiveInteger) {
     if (i % 3 === 0) {
       item = "ping"
     }
+    if (i % 5 === 0) {
+      item = "pong"
+    }
     results.push(item);
   }
 
