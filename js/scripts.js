@@ -9,14 +9,19 @@ var pingPongSequence = function(positiveInteger) {
       results = [];
     }
     item = i;
+
     if (i % 3 === 0) {
       item = "ping"
     }
     if (i % 5 === 0) {
       item = "pong"
     }
+    if (i % 15 === 0) {
+      item = "ping-pong"
+    }
+
     results.push(item);
-  }
+  } // End for
 
   return results;
 }
