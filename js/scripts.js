@@ -1,7 +1,7 @@
   ////////////////////
  // Back End Section
 ////////////////////
-var pingPongSequence = function(positiveInteger) {
+var pingPongSequence = function(positiveInteger, exceptions) {
   var results, item;
 
   for (var i = 1; i <= positiveInteger; i++) {
@@ -10,15 +10,11 @@ var pingPongSequence = function(positiveInteger) {
     }
     item = i;
 
-    if (i % 3 === 0) {
-      item = "ping"
-    }
-    if (i % 5 === 0) {
-      item = "pong"
-    }
-    if (i % 15 === 0) {
-      item = "ping-pong"
-    }
+    exceptions.forEach(function(exceptionElements) {
+      if (i % exceptionElements[0] === 0) {
+        item = exceptionElements[1];
+      }
+    });
 
     results.push(item);
   } // End for
@@ -36,7 +32,7 @@ $(document).ready(function() {
 
     var positiveInteger = parseInt( $("#inputPositiveInteger").val() );
 
-    var results = pingPongSequence(positiveInteger);
+    var results = pingPongSequence(positiveInteger, [[3,"ping"], [5, "pong"], [15, "ping-pong"]]);
 
     var outputResult;
 
