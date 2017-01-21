@@ -13,14 +13,31 @@
       <h2>Ping Pong Sequence Generator</h2>
 
       <h4>Rules:</h4>
+      <h5>Optionally enter divisible by numbers and replacements to override them</h5>
       <h5>Generate a sequence of numbers up to the value entered with the following exceptions:</h5>
-      <ol>
-        <li>Numbers divisible by 3 are replaced with "ping"</li>
-        <li>Numbers divisible by 5 are replaced with "pong"</li>
-        <li>Numbers divisible by 15 are replaced with "ping-pong"</li>
-      </ol>
-
       <form class="form-inline">
+
+        <ol>
+          <li>
+            Numbers divisible by
+            <input id="divisible1" type="number" min="1" value="3">
+            are replaced with
+            <input id="replacement1" type="text" value="ping">
+          </li>
+          <li>
+            Numbers divisible by
+            <input id="divisible2" type="number" min="1" value="5">
+            are replaced with
+            <input id="replacement2" type="text" value="pong">
+          </li>
+          <li>
+            Numbers divisible by
+            <input id="divisible3" type="number" min="1" value="15">
+            are replaced with
+            <input id="replacement3" type="text" value="ping-pong">
+          </li>
+        </ol>
+
         <div class="form-group">
           <label for="inputPositiveInteger">Enter an integer greater than 0:</label>
           <input id="inputPositiveInteger" class="form-control" type="text" placeholder="Your integer">

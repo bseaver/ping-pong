@@ -32,7 +32,15 @@ $(document).ready(function() {
 
     var positiveInteger = parseInt( $("#inputPositiveInteger").val() );
 
-    var results = pingPongSequence(positiveInteger, [[3,"ping"], [5, "pong"], [15, "ping-pong"]]);
+    var exceptions = [];
+    for (var xnum = 1; xnum <= 3; xnum += 1) {
+      exceptions.push([
+        parseInt($("#divisible" + xnum).val()),
+        encodeURI($("#replacement" + xnum).val())
+      ]);
+    }
+
+    var results = pingPongSequence(positiveInteger, exceptions);
 
     var outputResult;
 
